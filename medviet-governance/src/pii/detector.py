@@ -37,25 +37,27 @@ def build_vietnamese_analyzer() -> AnalyzerEngine:
     """
 
     # --- TASK 2.2.1 ---
-    # Tạo CCCD recognizer: số CCCD VN có đúng 12 chữ số
+    # Tạo CCCD recognizer: số CCCD VN có 11-12 chữ số
     cccd_pattern = Pattern(
         name="cccd_pattern",
-        regex=r"\b\d{12}\b",
+        regex=r"\b\d{11,12}\b",
         score=0.9
     )
     cccd_recognizer = PatternRecognizer(
         supported_entity="VN_CCCD",
+        supported_language=VI_LANGUAGE,
         patterns=[cccd_pattern],
         context=["cccd", "căn cước", "chứng minh", "cmnd"]
     )
 
     # --- TASK 2.2.2 ---
-    # Tạo phone recognizer: số điện thoại VN (0[3|5|7|8|9]xxxxxxxx)
+    # Tạo phone recognizer: số điện thoại VN (có hoặc không đầu 0)
     phone_recognizer = PatternRecognizer(
         supported_entity="VN_PHONE",
+        supported_language=VI_LANGUAGE,
         patterns=[Pattern(
             name="vn_phone",
-            regex=r"\b0[35789]\d{8}\b",
+            regex=r"\b0?[35789]\d{8}\b",
             score=0.85
         )],
         context=["điện thoại", "sdt", "phone", "liên hệ"]
@@ -65,6 +67,7 @@ def build_vietnamese_analyzer() -> AnalyzerEngine:
     # Tạo email recognizer: pattern-based
     email_recognizer = PatternRecognizer(
         supported_entity="EMAIL_ADDRESS",
+        supported_language=VI_LANGUAGE,
         patterns=[Pattern(
             name="email_pattern",
             regex=r"\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b",
@@ -77,6 +80,7 @@ def build_vietnamese_analyzer() -> AnalyzerEngine:
     # Tạo person recognizer: pattern-based cho tên tiếng Việt
     person_recognizer = PatternRecognizer(
         supported_entity="PERSON",
+        supported_language=VI_LANGUAGE,
         patterns=[Pattern(
             name="vn_person_latin",
             regex=(r"\b[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]"
@@ -127,6 +131,7 @@ def detect_pii(text: str, analyzer: AnalyzerEngine) -> list:
     results = analyzer.analyze(
         text=text,
         language="vi",
-        entities=SUPPORTED_ENTITIES
+        entities=SUPPORTED_ENTITIES,
+        score_threshold=0.3
     )
     return results
