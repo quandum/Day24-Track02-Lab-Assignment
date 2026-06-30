@@ -33,14 +33,14 @@ Notebook `data-governance-lab/data_governance_lab.ipynb` chứa **7 phần** tư
 
 | Phần | Nội dung | Trạng thái |
 |:----:|----------|:---------:|
-| 0 | Cài đặt môi trường (pip, spaCy, AGT) | 🚧 Cần chạy notebook cells |
-| 1 | Chuẩn bị dữ liệu (generate_patients) | ✅ Hoàn tất (qua medviet-governance) |
-| 2 | PII Detection & Anonymization | ✅ Hoàn tất (src/pii/) |
-| 3 | RBAC với Casbin | ✅ Hoàn tất (src/access/) |
-| 4 | Mã hóa envelope | ✅ Hoàn tất (src/encryption/) |
-| 5 | Kiểm tra chất lượng dữ liệu | ✅ Hoàn tất (src/quality/) |
-| **6** | **Quản trị Agent với Microsoft AGT** | **✅ YAML policy hoàn tất (medviet-data-policy.yaml)** |
-| **7** | **Ánh xạ tuân thủ NĐ13** | ✅ Hoàn tất (compliance_checklist.md + COMPLIANCE_MAP) |
+| 0 | Cài đặt môi trường (pip, spaCy, AGT) | ✅ Hoàn tất (env setup + pip install) |
+| 1 | Chuẩn bị dữ liệu (generate_patients) | ✅ Hoàn tất (200 records) |
+| 2 | PII Detection & Anonymization | ✅ Hoàn tất (detector.py + anonymizer.py) |
+| 3 | RBAC với Casbin | ✅ Hoàn tất (policy.csv + rbac.py) |
+| 4 | Mã hóa envelope | ✅ Hoàn tất (vault.py AES-256-GCM) |
+| 5 | Kiểm tra chất lượng dữ liệu | ✅ Hoàn tất (validation.py) |
+| **6** | **Quản trị Agent với Microsoft AGT** | **✅ Hoàn tất (YAML policy + notebook cells)** |
+| **7** | **Ánh xạ tuân thủ NĐ13** | ✅ Hoàn tất (compliance_checklist.md + notebook cell) |
 
 ### Kết quả đã hoàn thành từ Notebook
 

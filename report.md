@@ -22,14 +22,14 @@ Notebook `data-governance-lab/data_governance_lab.ipynb` bao gồm **7 phần** 
 
 | Phần | Nội dung | Trạng thái |
 |:----:|----------|:---------:|
-| 0 | Cài đặt môi trường (pip, spaCy, AGT) | 🚧 Cần chạy notebook cells |
-| 1 | Chuẩn bị dữ liệu — generate_patients | ✅ Hoàn tất (qua medviet-governance) |
-| 2 | PII Detection & Anonymization — Presidio | ✅ Hoàn tất (src/pii/) |
-| 3 | RBAC với Casbin | ✅ Hoàn tất (src/access/) |
-| 4 | Mã hóa envelope AES-256-GCM | ✅ Hoàn tất (src/encryption/) |
-| 5 | Kiểm tra chất lượng — Great Expectations | ✅ Hoàn tất (src/quality/) |
-| **6** | **Quản trị Agent với Microsoft AGT** | **✅ YAML policy + notebook COMPLIANCE_MAP hoàn tất** |
-| **7** | **Ánh xạ tuân thủ NĐ13** | ✅ Hoàn tất (compliance_checklist.md + COMPLIANCE_MAP) |
+| 0 | Cài đặt môi trường (pip, spaCy, AGT) | ✅ Hoàn tất (env setup + pip install) |
+| 1 | Chuẩn bị dữ liệu — generate_patients | ✅ Hoàn tất (200 records) |
+| 2 | PII Detection & Anonymization — Presidio | ✅ Hoàn tất (detector.py + anonymizer.py) |
+| 3 | RBAC với Casbin | ✅ Hoàn tất (policy.csv + rbac.py) |
+| 4 | Mã hóa envelope AES-256-GCM | ✅ Hoàn tất (vault.py round-trip OK) |
+| 5 | Kiểm tra chất lượng — Great Expectations | ✅ Hoàn tất (validation.py) |
+| **6** | **Quản trị Agent với Microsoft AGT** | **✅ Hoàn tất (YAML policy + notebook cells)** |
+| **7** | **Ánh xạ tuân thủ NĐ13** | ✅ Hoàn tất (compliance_checklist + notebook COMPLIANCE_MAP) |
 
 ### Phần 6 — Agent Governance Toolkit (30 phút)
 
