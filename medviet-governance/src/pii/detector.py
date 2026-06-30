@@ -11,7 +11,7 @@ def build_vietnamese_analyzer() -> AnalyzerEngine:
     # Tạo CCCD recognizer: số CCCD VN có đúng 12 chữ số
     cccd_pattern = Pattern(
         name="cccd_pattern",
-        regex=r"___",          # TODO: điền regex cho 12 chữ số
+        regex=r"\b\d{12}\b",          # TODO: điền regex cho 12 chữ số
         score=0.9
     )
     cccd_recognizer = PatternRecognizer(
@@ -26,7 +26,7 @@ def build_vietnamese_analyzer() -> AnalyzerEngine:
         supported_entity="VN_PHONE",
         patterns=[Pattern(
             name="vn_phone",
-            regex=r"___",      # TODO: điền regex
+            regex=r"\b0[35789]\d{8}\b",      # TODO: điền regex
             score=0.85
         )],
         context=["điện thoại", "sdt", "phone", "liên hệ"]
@@ -37,15 +37,15 @@ def build_vietnamese_analyzer() -> AnalyzerEngine:
     provider = NlpEngineProvider(nlp_configuration={
         "nlp_engine_name": "spacy",
         "models": [{"lang_code": "vi", 
-                    "model_name": "___"}]   # TODO: điền model name
+                    "model_name": "vi_core_news_lg"}]   # TODO: điền model name
     })
     nlp_engine = provider.create_engine()
 
     # --- TASK 2.2.4 ---
     # Khởi tạo AnalyzerEngine và add các recognizer
     analyzer = AnalyzerEngine(nlp_engine=nlp_engine)
-    analyzer.registry.add_recognizer(___)   # TODO
-    analyzer.registry.add_recognizer(___)   # TODO
+    analyzer.registry.add_recognizer(cccd_recognizer)   # TODO
+    analyzer.registry.add_recognizer(phone_recognizer)   # TODO
 
     return analyzer
 
@@ -57,8 +57,8 @@ def detect_pii(text: str, analyzer: AnalyzerEngine) -> list:
     Entities cần detect: PERSON, EMAIL_ADDRESS, VN_CCCD, VN_PHONE
     """
     results = analyzer.analyze(
-        text=___,       # TODO
-        language=___,   # TODO
-        entities=___    # TODO
+        text=text,       # TODO
+        language="vi",   # TODO
+        entities=["PERSON", "EMAIL_ADDRESS", "VN_CCCD", "VN_PHONE"]    # TODO
     )
     return results
