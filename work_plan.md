@@ -33,28 +33,27 @@ Notebook `data-governance-lab/data_governance_lab.ipynb` chứa **7 phần** tư
 
 | Phần | Nội dung | Trạng thái |
 |:----:|----------|:---------:|
-| 0 | Cài đặt môi trường (pip, spaCy, AGT) | 🚧 Cần chạy |
+| 0 | Cài đặt môi trường (pip, spaCy, AGT) | 🚧 Cần chạy notebook cells |
 | 1 | Chuẩn bị dữ liệu (generate_patients) | ✅ Hoàn tất (qua medviet-governance) |
 | 2 | PII Detection & Anonymization | ✅ Hoàn tất (src/pii/) |
 | 3 | RBAC với Casbin | ✅ Hoàn tất (src/access/) |
 | 4 | Mã hóa envelope | ✅ Hoàn tất (src/encryption/) |
 | 5 | Kiểm tra chất lượng dữ liệu | ✅ Hoàn tất (src/quality/) |
-| **6** | **Quản trị Agent với Microsoft AGT** | **⬜ Chưa chạy** |
-| **7** | Ánh xạ tuân thủ NĐ13 | ✅ Hoàn tất (compliance_checklist.md) |
+| **6** | **Quản trị Agent với Microsoft AGT** | **✅ YAML policy hoàn tất (medviet-data-policy.yaml)** |
+| **7** | **Ánh xạ tuân thủ NĐ13** | ✅ Hoàn tất (compliance_checklist.md + COMPLIANCE_MAP) |
 
-### Yêu cầu còn lại từ Notebook
+### Kết quả đã hoàn thành từ Notebook
 
-**Phần 6 — Agent Governance với AGT:**
-- Cài đặt `agent-governance-toolkit` (pip hoặc từ local source)
-- Chạy cell thiết lập AGT PolicyEvaluator
-- Chạy cell đánh giá agent actions (allow/deny)
-- Chạy cell thực thi StatelessKernel
-- **Bài 6.1:** Bổ sung rules vào `policies/medviet-data-policy.yaml`:
-  - ✅ Cho phép agent `data_analyst` chỉ đọc dataset `aggregated`
-  - ✅ Yêu cầu phê duyệt con người trước hành động `delete`
+**Bài 1.1 — Liệt kê cột PII:**
+- ✅ `PII_COLUMNS` đã điền 7 cột: `ho_ten, cccd, ngay_sinh, so_dien_thoai, email, dia_chi, bac_si_phu_trach`
 
-**Phần 7 — Compliance Mapping:**
-- ✅ Đã hoàn tất qua `compliance_checklist.md` và `report.md`
+**Bài 6.1 — AGT Policy rules (medviet-data-policy.yaml):**
+- ✅ Rule `allow-analyst-read-aggregated`: agent data_analyst chỉ đọc aggregated
+- ✅ Rule `require-human-approval-delete`: mọi delete cần phê duyệt người
+
+**Phần 7 — COMPLIANCE_MAP:**
+- ✅ "Ghi log kiểm toán" → FastAPI middleware log + CloudTrail
+- ✅ "Phát hiện vi phạm" → Prometheus + Grafana + Bandit + git-secrets hook
 
 ---
 

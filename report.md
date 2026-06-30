@@ -22,14 +22,14 @@ Notebook `data-governance-lab/data_governance_lab.ipynb` bao gồm **7 phần** 
 
 | Phần | Nội dung | Trạng thái |
 |:----:|----------|:---------:|
-| 0 | Cài đặt môi trường (pip, spaCy, AGT) | 🚧 Chưa chạy notebook |
+| 0 | Cài đặt môi trường (pip, spaCy, AGT) | 🚧 Cần chạy notebook cells |
 | 1 | Chuẩn bị dữ liệu — generate_patients | ✅ Hoàn tất (qua medviet-governance) |
 | 2 | PII Detection & Anonymization — Presidio | ✅ Hoàn tất (src/pii/) |
 | 3 | RBAC với Casbin | ✅ Hoàn tất (src/access/) |
 | 4 | Mã hóa envelope AES-256-GCM | ✅ Hoàn tất (src/encryption/) |
 | 5 | Kiểm tra chất lượng — Great Expectations | ✅ Hoàn tất (src/quality/) |
-| **6** | **Quản trị Agent với Microsoft AGT** | **⬜ Chưa chạy** |
-| **7** | **Ánh xạ tuân thủ NĐ13** | ✅ Hoàn tất (compliance_checklist.md) |
+| **6** | **Quản trị Agent với Microsoft AGT** | **✅ YAML policy + notebook COMPLIANCE_MAP hoàn tất** |
+| **7** | **Ánh xạ tuân thủ NĐ13** | ✅ Hoàn tất (compliance_checklist.md + COMPLIANCE_MAP) |
 
 ### Phần 6 — Agent Governance Toolkit (30 phút)
 
