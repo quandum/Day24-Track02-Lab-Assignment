@@ -14,6 +14,16 @@ rules:
     action: allow
     description: "Analysts may read aggregated metrics (no PII)"
 
+  - name: allow-analyst-read-aggregated
+    condition: "action.agent_id == 'data_analyst' and action.type == 'read' and action.dataset == 'aggregated'"
+    action: allow
+    description: "Data analyst agents may only read aggregated datasets"
+
+  - name: require-human-approval-delete
+    condition: "action.type == 'delete'"
+    action: require_approval
+    description: "All delete operations require human approval"
+
   - name: block-raw-pii
     condition: "action.dataset == 'raw_pii'"
     action: deny
